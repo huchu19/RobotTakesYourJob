@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A darkly comic pixel-art browser game. Earn, reskill, and stay one lesson ahead of an office robot that is learning every task you do.">
+<title>ROBOT TAKES YOUR JOB</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect x='3' y='3' width='10' height='7' fill='%23aeb6c4'/><rect x='5' y='5' width='6' height='2' fill='%23ff3b4d'/><rect x='7' y='1' width='2' height='2' fill='%23ff3b4d'/><rect x='4' y='11' width='8' height='4' fill='%23aeb6c4'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="vignette"></div>
+<div id="scanlines"></div>
+
+<div id="app">
+
+  <!-- ============ HEADER ============ -->
+  <header id="header">
+    <div class="brand">
+      <div class="brand-title">ROBOT<span class="blink-caret">_</span>TAKES<br>YOUR JOB</div>
+      <div class="brand-sub">EMPLOYEE RETENTION SIMULATOR v1.0</div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">SAVINGS</div>
+        <div class="stat-value money" id="stat-money">$0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">INCOME</div>
+        <div class="stat-value" id="stat-ips">$0/s</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">EMPLOYED</div>
+        <div class="stat-value" id="stat-day">DAY 1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">COMPANY PROFITS</div>
+        <div class="stat-value profits" id="stat-profits">$0</div>
+      </div>
+      <div class="stat status-stat">
+        <div class="stat-label">STATUS</div>
+        <div class="stat-value" id="stat-status"><span class="badge badge-ok">EMPLOYED</span></div>
+      </div>
+    </div>
+    <div class="header-btns">
+      <button class="pxbtn tiny" id="btn-mute" title="Toggle sound">SND:OFF</button>
+      <button class="pxbtn tiny danger" id="btn-reset" title="Wipe save">RESET</button>
+    </div>
+  </header>
+
+  <!-- ============ ROBOT LEARNING BAR ============ -->
+  <div id="threat-bar">
+    <div class="threat-inner" id="threat-inner">
+      <span class="threat-label" id="threat-label">THE ROBOT IS BOOTING…</span>
+      <div class="threat-track"><div class="threat-fill" id="threat-fill"></div></div>
+      <span class="threat-time" id="threat-time"></span>
+    </div>
+  </div>
+
+  <!-- ============ MAIN ============ -->
+  <main id="main">
+
+    <section id="left-col">
+      <div id="stage-wrap">
+        <canvas id="stage" width="320" height="180"></canvas>
+      </div>
+
+      <div id="action-row">
+        <button class="pxbtn work" id="btn-work">WORK OVERTIME<span class="work-amt" id="work-amt">+$1</span></button>
+        <div id="robot-readout">
+          <div class="ro-line">UNIT: <span id="ro-ver">HR-9000 v1.0</span></div>
+          <div class="ro-line">TASKS ABSORBED: <span id="ro-count">0/12</span></div>
+        </div>
+      </div>
+
+      <div id="log-panel">
+        <div class="panel-head">■ OFFICE LOG</div>
+        <ul id="log-list"></ul>
+      </div>
+    </section>
+
+    <section id="right-col">
+      <nav id="tabs">
+        <button class="tab active" data-tab="tasks">TASKS</button>
+        <button class="tab" data-tab="reskill">RESKILL</button>
+        <button class="tab" data-tab="perks">PERKS</button>
+      </nav>
+      <div class="tab-page active" id="tab-tasks"></div>
+      <div class="tab-page" id="tab-reskill"></div>
+      <div class="tab-page" id="tab-perks"></div>
+    </section>
+
+  </main>
+
+  <!-- ============ NEWS TICKER ============ -->
+  <footer id="ticker">
+    <span class="ticker-tag">KLQZ BUSINESS NEWS</span>
+    <div class="ticker-clip"><div class="ticker-text" id="ticker-text"></div></div>
+  </footer>
+
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div id="toasts"></div>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-veil hidden" id="modal-veil">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+    <div class="modal-title" id="modal-title">TITLE</div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-btns" id="modal-btns"></div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/sfx.js"></script>
+<script src="js/game.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

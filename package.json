@@ -1,0 +1,14 @@
+{
+  "name": "robot-takes-your-job",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A pixel-art idle game about reskilling faster than office automation.",
+  "scripts": {
+    "test": "node --test tests/game.test.cjs",
+    "test:browser": "playwright test",
+    "check": "npm test && npm run test:browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
