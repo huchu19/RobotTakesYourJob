@@ -41,7 +41,8 @@ test('reskilling respects tiers, balances and permanent automation', () => {
   assert.equal(Game.buyTask('t_rideshare'), false);
   assert.equal(Game.buyTask('t_meetings'), true);
   assert.equal(Game.buyTask('t_meetings'), false);
-  Game.tick(150);
+  // Any tier-one task may be selected; meetings take longer to automate.
+  Game.tick(200);
   assert.equal(Game.state.robot.absorbed, 1);
   assert.equal(Game.buyTask('t_rideshare'), true);
   const lost = Game.automatedTasks()[0];
